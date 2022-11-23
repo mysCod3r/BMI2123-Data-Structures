@@ -21,7 +21,7 @@ public:
 };
 ```
 </td>
-    <td> <img src="node_model.jpg" width = 300></td>  
+    <td> <img src="images/node_model.jpg" width = 300></td>  
 </table>
 
 
@@ -51,7 +51,7 @@ class Stack {
     }
 ``` 
 </td>
-    <td> <img src="stack.jpg" width = 600></td>  
+    <td> <img src="images/stack.jpg" width = 600></td>  
 </table>
 
 ### - push
@@ -71,8 +71,8 @@ class Stack {
     }
 ```
 </td>
-    <td> <img src="newNode1.gif" width = 500></td>  
-    <td> <img src="newNode2.gif" width = 500></td>  
+    <td> <img src="images/newNode1.gif" width = 500></td>  
+    <td> <img src="images/newNode2.gif" width = 500></td>  
 </table>
 
 ### - pop
@@ -99,7 +99,7 @@ class Stack {
     }
 ```
 </td>
-    <td> <img src="pop.gif" width = 500></td>  
+    <td> <img src="images/pop.gif" width = 500></td>  
 </table>
  - Stack in sayacını geri döndürür.
 
@@ -178,7 +178,7 @@ public:
     }
 ```
 </td>
-    <td> <img src="rev.gif" width = 500></td>  
+    <td> <img src="images/rev.gif" width = 500></td>  
 </table>
 
  - Birleştirileck Stack ler parametre ile alınır.
@@ -233,7 +233,7 @@ public:
     }
 ```
 </td>
-    <td> <img src="mergedStacks.gif" width = 300></td>  
+    <td> <img src="images/mergedStacks.gif" width = 300></td>  
 </table>
 
  ## main methodumuzda işlemlerimizi uygulamaya geçelim.
