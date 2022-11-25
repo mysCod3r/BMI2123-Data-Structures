@@ -29,7 +29,7 @@ public:
 
 - Stack in en üstteki node u için: `top`
 
-- Bir altındaki node adresi için: `counter`
+- Stack teki eleman sayısını tutmak için: `counter`
 <table>
     <td> 
 
