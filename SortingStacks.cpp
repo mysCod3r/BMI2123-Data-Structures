@@ -20,8 +20,8 @@ public:
     int counter;
     Stack()           // Constructor
     {
-        top = NULL;   // Stack oluşturulurken top Null dır.
-        counter = 0;     // Stack oluşturulurken boyut 0 dır
+        top = NULL;   // Stack oluÃ¾turulurken top Null dÃ½r.
+        counter = 0;     // Stack oluÃ¾turulurken boyut 0 dÃ½r
     }
 
     void push(int data)
@@ -142,7 +142,7 @@ int main()
     Stack stack2;
     
     stack1.push(10);
-    stack1.push(5);
+    stack1.push(4);
     stack1.push(1);
     
     stack2.push(8);
