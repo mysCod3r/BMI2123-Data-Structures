@@ -1,13 +1,13 @@
 #include <iostream>
 #include <string>
-#include <locale.h> // CONSOLE DA TÜRKÇE KARAKTER HATALARI ÝÇÝN EKLENMÝÞTÝR.
-#include <algorithm> // STRING CONVERSION ÝÇÝN EKLENMÝÞTÝR.
+#include <locale.h> // CONSOLE DA TÃœRKÃ‡E KARAKTER HATALARI Ä°Ã‡Ä°N EKLENMÄ°ÅžTÄ°R.
+#include <algorithm> // STRING CONVERSION Ä°Ã‡Ä°N EKLENMÄ°ÅžTÄ°R.
 using namespace std;
 
 /*
- GÝRÝLEN KELÝMELERÝN BELLÝ BÝR DÜZENDE OLMASINI KONTROL EDEBÝLMEK AMACIYLA 
- UTILITY CLASSI ÝÇERÝSÝNE GEREKLÝ FONKSÝYON YAZILMIÞTIR.
- KULLANICI NE GÝRERSE GÝRSÝN BÜYÜK HARFE ÇEVÝRÝP, BAÞINDAN VE SONUNDAN BOÞLUKLARI TEMÝZLEMEKTEDÝR.
+ GÄ°RÄ°LEN KELÄ°MENÄ°N BELLÄ° BÄ°R DÃœZENDE OLMASINI KONTROL EDEBÄ°LMEK AMACIYLA 
+ UTILITY CLASSI Ä°Ã‡ERÄ°SÄ°NE GEREKLÄ° FONKSÄ°YON YAZILMIÅžTIR.
+ KULLANICI NE GÄ°RERSE GÄ°RSÄ°N BÃœYÃœK HARFE Ã‡EVÄ°RÄ°P, BAÅžINDAN VE SONUNDAN BOÃžLUKLARI TEMÄ°ZLEMEKTEDÄ°R.
 */
 class Utility {
 public:
@@ -83,7 +83,7 @@ class AVLTree {
 
     AVLNode* minValueNode(AVLNode* node) {
         AVLNode* current = node;
-        // SOL EN ALTTAKÝ YAPRAÐI BULMAK ÝÇÝN:
+        // SOL EN ALTTAKÄ° YAPRAÄžI BULMAK Ä°Ã‡Ä°N:
         while (current->left != NULL) {
             current = current->left;
         }
@@ -93,7 +93,7 @@ class AVLTree {
     AVLNode* insertNode(AVLNode* node, string key, string value) {
         if (node == NULL) {
             count = count + 1;
-            cout << "Kelime baþarýyla eklendi. " << endl;
+            cout << "Kelime baÅŸarÄ±yla eklendi. " << endl;
             return new AVLNode(key, value);
         }
         if (key < node->key) {
@@ -103,7 +103,7 @@ class AVLTree {
             node->right = insertNode(node->right, key, value);
         }
         else {
-            cout << "Bu deðer zaten aðaçta mevcut. Anlamýný güncellemek için [Güncelleme] fonksiyonunu çaðýrýnýz." << endl;
+            cout << "Bu deÄŸer zaten aÄŸaÃ§ta mevcut. AnlamÄ±nÄ± gÃ¼ncellemek iÃ§in [GÃ¼ncelleme] fonksiyonunu Ã§aÄŸÄ±rÄ±nÄ±z." << endl;
         }
         
         node->height = 1 + max(getHeight(node->left), getHeight(node->right));
@@ -131,42 +131,42 @@ class AVLTree {
 
     AVLNode* deleteNode(AVLNode* node, string key) {
         if (node == NULL) {
-            cout << "Silinmek istenen kelime aðaçta bulunamadý." << endl;
+            cout << "Silinmek istenen kelime aÄŸaÃ§ta bulunamadÄ±." << endl;
             return NULL;
         }
 
-        // Silinmek istenen key current key den küçükse sola doðru ilerler
+        // Silinmek istenen key current key den kÃ¼Ã§Ã¼kse sola doÄŸru ilerler
         else if (key < node->key) {
             node->left = deleteNode(node->left, key);
         }
-        // Silinmek istenen key current key den büyükse saða doðru ilerler
+        // Silinmek istenen key current key den bÃ¼yÃ¼kse saÄŸa doÄŸru ilerler
         else if (key > node->key) {
             node->right = deleteNode(node->right, key);
         }
-        // Silinecek key aðaçta bulunmuþsa:
+        // Silinecek key aÄŸaÃ§ta bulunmuÅŸsa:
         else {
-            // Tek yapraklý ya da yapraksýz case: 
+            // Tek yapraklÄ± ya da yapraksÄ±z case: 
             if (node->left == NULL) {
                 AVLNode* temp = node->right;
                 delete node;
                 count -= 1;
-                cout << "Kelime baþarýyla silindi." << endl;
+                cout << "Kelime baÅŸarÄ±yla silindi." << endl;
                 return temp;
             }
             else if (node->right == NULL) {
                 AVLNode* temp = node->left;
                 delete node;
                 count -= 1;
-                cout << "Kelime baþarýyla silindi." << endl;
+                cout << "Kelime baÅŸarÄ±yla silindi." << endl;
                 return temp;
             }
             else {
-                // Ýki yapraklý case:
-                // Silinecek yapraðýn sað alt aðacýný al
+                // Ä°ki yapraklÄ± case:
+                // Silinecek yapraÄŸÄ±n saÄŸ alt yapraÄŸÄ±nÄ± al
                 AVLNode* temp = minValueNode(node->right);
-                // Bulunan aðaca taþý.
+                // Bulunan yapraÄŸa taÅŸÄ±.
                 node->key = temp->key;
-                // Yer deðiþtirme iþleminden sonra sil.
+                // Yer deÄŸiÅŸtirme iÅŸleminden sonra sil.
                 node->right = deleteNode(node->right, temp->key);
             }
         }
@@ -248,18 +248,18 @@ public:
         string key;
         string value;
 
-        cout << "Güncellemek istediðiniz kelimeyi giriniz: ";
+        cout << "GÃ¼ncellemek istediÄŸiniz kelimeyi giriniz: ";
         cin >> key;
         key = u.toUpper(key);
         value = u.toUpper(value);
         AVLNode* node = searchNode(root, key);
         if (node == NULL)
-            cout << "Bu kelime aðaçta bulunamadý." << endl;
+            cout << "Bu kelime aÄŸaÃ§ta bulunamadÄ±." << endl;
         else {
-            cout << endl << "Kelimenin yeni anlamýný giriniz: ";
+            cout << endl << "Kelimenin yeni anlamÄ±nÄ± giriniz: ";
             cin >> value;
             node->value = value;
-            cout << "Kelime baþarýyla güncellendi." << endl;
+            cout << "Kelime baÅŸarÄ±yla gÃ¼ncellendi." << endl;
 
         }
     }
@@ -268,7 +268,7 @@ public:
         AVLNode* node = searchNode(root, key);
         key = u.toUpper(key);
         if (node == NULL)
-            cout << "Bu kelime aðaçta bulunamadý." << endl;
+            cout << "Bu kelime aÄŸaÃ§ta bulunamadÄ±." << endl;
         else
             cout << node->key << " : " << node->value << endl;
     }
@@ -290,7 +290,7 @@ public:
         cin >> key1;
         key1 = u.toUpper(key1);
         if (searchNode(root, key1) == NULL) {
-            cout << "1. kelime aðaçta bulunamadý." << endl;
+            cout << "1. kelime aÄŸaÃ§ta bulunamadÄ±." << endl;
             return;
         }
         
@@ -298,7 +298,7 @@ public:
         cin >> key2;
         key2 = u.toUpper(key2);
         if (searchNode(root, key2) == NULL) {
-            cout << "2. Kelime aðaçta bulunamadý." << endl;
+            cout << "2. Kelime aÄŸaÃ§ta bulunamadÄ±." << endl;
             return;
         }
 
@@ -311,7 +311,7 @@ public:
 
     bool treeEmptyControl() {
         if (counter() == 0) {
-            cout << "Aðaçta hiç eleman yok. Ekleme yapmak için 1'i tuþlayýn." << endl;
+            cout << "AÄŸaÃ§ta hiÃ§ eleman yok. Ekleme yapmak iÃ§in 1'i tuÅŸlayÄ±n." << endl;
             return 0;
         }
         return 1;
@@ -333,22 +333,22 @@ int main()
     while (true)
     {
         cout << "---------------------------------" << endl;
-        cout << "1- Aðaca eleman ekle." << endl;
-        cout << "2- Aðaçtan eleman sil." << endl;
-        cout << "3- Aðaçtan elemanýn anlamýný güncelle." << endl;
-        cout << "4- Aðacý alftabetik olarak listele." << endl;
-        cout << "5- Aðacý kelime anlamlarýyla birlikte alftabetik olarak listele." << endl;
-        cout << "6- Aðaçtan kelimenin anlamýný bul." << endl;
-        cout << "7- Aðacý verilen iki kelimeye göre alfabetik listele." << endl;
-        cout << "8- Aðaçta kaç eleman olduðunu göster." << endl;
-        cout << "0- Cikis." << endl;
+        cout << "1- AÄŸaca eleman ekle." << endl;
+        cout << "2- AÄŸaÃ§tan eleman sil." << endl;
+        cout << "3- AÄŸaÃ§tan elemanÄ±n anlamÄ±nÄ± gÃ¼ncelle." << endl;
+        cout << "4- AÄŸacÄ± alftabetik olarak listele." << endl;
+        cout << "5- AÄŸacÄ± kelime anlamlarÄ±yla birlikte alftabetik olarak listele." << endl;
+        cout << "6- AÄŸaÃ§tan kelimenin anlamÄ±nÄ± bul." << endl;
+        cout << "7- AÄŸacÄ± verilen iki kelimeye gÃ¶re alfabetik listele." << endl;
+        cout << "8- AÄŸaÃ§ta kaÃ§ eleman olduÄŸunu gÃ¶ster." << endl;
+        cout << "0- Ã‡Ä±kÄ±ÅŸ." << endl;
         cout << "---------------------------------" << endl;
 
         cin >> inp;
 
         if (cin.fail())
         {
-            cout << "ERROR -- You did not enter an integer" << endl;
+            cout << "Hata - Bir sayÄ± girmediniz" << endl;
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
@@ -362,9 +362,9 @@ int main()
             switch (inp)
             {
                 case 1:
-                    cout << "Eklemek istediðiniz kelimeyi giriniz: ";
+                    cout << "Eklemek istediÃ°ÄŸniz kelimeyi giriniz: ";
                     cin >> key;
-                    cout << endl << "Kelimenin anlamýný giriniz: ";
+                    cout << endl << "Kelimenin anlamÄ±nÄ± giriniz: ";
                     cin >> value;
                     key = u.toUpper(key);
                     value = u.toUpper(value);
@@ -374,7 +374,7 @@ int main()
                     if (!control) {
                         break;
                     }
-                    cout << "Silmek istediðiniz kelimeyi giriniz: ";
+                    cout << "Silmek istediÄŸiniz kelimeyi giriniz: ";
                     cin >> key;
                     key = u.toUpper(key);
                     tree->deletee(key);
@@ -403,7 +403,7 @@ int main()
                     if (!control) {
                         break;
                     }
-                    cout << "Anlamýný bulmak istediðiniz kelimeyi giriniz: ";
+                    cout << "AnlamÄ±nÄ± bulmak istediÄŸiniz kelimeyi giriniz: ";
                     cin >> key;
                     key = u.toUpper(key);
                     tree->search(key);
@@ -418,19 +418,19 @@ int main()
                     if (!control) {
                         break;
                     }
-                    cout << "Aðaçtaki eleman sayýsý: " << tree->counter() << endl;
+                    cout << "AÄŸaÃ§taki eleman sayÄ±sÄ±: " << tree->counter() << endl;
                     break;
                 case 0:
-                    cout << "Çýkýþ yapýlýyor..." << endl;
+                    cout << "Ã‡Ä±kÄ±ÅŸ yapÄ±lÄ±yor..." << endl;
                     cout << "**************************" << endl;
-                    cout << "* Muhammed Yasin Þenocak *" << endl;
+                    cout << "* Muhammed Yasin Ãženocak *" << endl;
                     cout << "*  Computer Engineering  *" << endl;
                     cout << "*       201504021        *" << endl;
                     cout << "**************************" << endl;
                     exit(25);
                     break;
                 default:
-                    cout << "Hatalý tuþlama yaptýnýz. Lütfen geçerli bir sayý tuþlayýnýz.." << endl;
+                    cout << "HatalÄ± tuÅŸlama yaptÄ±nÄ±z. LÃ¼tfen geÃ§erli bir sayÄ± tuÅŸlayÄ±nÄ±z.." << endl;
                     break;
             }
         }
