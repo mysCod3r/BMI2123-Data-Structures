@@ -5,9 +5,9 @@
 using namespace std;
 
 /*
- GİRİLEN KELİMENİN BELLİ BİR DÜZENDE OLMASINI KONTROL EDEBİLMEK AMACIYLA 
+ GİRİLEN KELİMELERİN BELLİ BİR DÜZENDE OLMASINI KONTROL EDEBİLMEK AMACIYLA 
  UTILITY CLASSI İÇERİSİNE GEREKLİ FONKSİYON YAZILMIŞTIR.
- KULLANICI NE GİRERSE GİRSİN BÜYÜK HARFE ÇEVİRİP, BAŞINDAN VE SONUNDAN BOÞLUKLARI TEMİZLEMEKTEDİR.
+ KULLANICI NE GİRERSE GİRSİN BÜYÜK HARFE ÇEVİRİP, BAŞINDAN VE SONUNDAN BOŞLUKLARI TEMİZLEMEKTEDİR.
 */
 class Utility {
 public:
@@ -26,7 +26,6 @@ class AVLNode{
 public:
     string key;
     string value;
-    AVLNode* parent;
     AVLNode* left;
     AVLNode* right;    
     int height;
@@ -162,9 +161,9 @@ class AVLTree {
             }
             else {
                 // İki yapraklı case:
-                // Silinecek yaprağın sağ alt yaprağını al
+                // Silinecek yaprağın sağ alt ağacını al
                 AVLNode* temp = minValueNode(node->right);
-                // Bulunan yaprağa taşı.
+                // Bulunan ağaca taşı.
                 node->key = temp->key;
                 // Yer değiştirme işleminden sonra sil.
                 node->right = deleteNode(node->right, temp->key);
@@ -249,15 +248,17 @@ public:
         string value;
 
         cout << "Güncellemek istediğiniz kelimeyi giriniz: ";
-        cin >> key;
+        //cin >> key;
+        getline(cin >> ws, key);
         key = u.toUpper(key);
-        value = u.toUpper(value);
         AVLNode* node = searchNode(root, key);
         if (node == NULL)
             cout << "Bu kelime ağaçta bulunamadı." << endl;
         else {
-            cout << endl << "Kelimenin yeni anlamını giriniz: ";
-            cin >> value;
+            cout << "Kelimenin yeni anlamını giriniz: ";
+            //cin >> value;
+            getline(cin >> ws, value);
+            value = u.toUpper(value);
             node->value = value;
             cout << "Kelime başarıyla güncellendi." << endl;
 
@@ -287,7 +288,9 @@ public:
         string key1;
         string key2;
         cout << "1. kelimeyi giriniz: ";
-        cin >> key1;
+        //cin >> key1;
+        getline(cin >> ws, key1);
+
         key1 = u.toUpper(key1);
         if (searchNode(root, key1) == NULL) {
             cout << "1. kelime ağaçta bulunamadı." << endl;
@@ -295,7 +298,9 @@ public:
         }
         
         cout << "2. kelimeyi giriniz: ";
-        cin >> key2;
+        //cin >> key2;
+        getline(cin >> ws, key2);
+
         key2 = u.toUpper(key2);
         if (searchNode(root, key2) == NULL) {
             cout << "2. Kelime ağaçta bulunamadı." << endl;
@@ -341,14 +346,15 @@ int main()
         cout << "6- Ağaçtan kelimenin anlamını bul." << endl;
         cout << "7- Ağacı verilen iki kelimeye göre alfabetik listele." << endl;
         cout << "8- Ağaçta kaç eleman olduğunu göster." << endl;
-        cout << "0- Çıkış." << endl;
+        cout << "0- Cikis." << endl;
         cout << "---------------------------------" << endl;
+        cout << "- Yapmak istediğiniz işlemi seçiniz:  ";
 
         cin >> inp;
 
         if (cin.fail())
         {
-            cout << "Hata - Bir sayı girmediniz" << endl;
+            cout << "HATA -- Bir sayı tuşlamadınız." << endl;
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
@@ -362,10 +368,14 @@ int main()
             switch (inp)
             {
                 case 1:
-                    cout << "Eklemek istediðğniz kelimeyi giriniz: ";
-                    cin >> key;
+                    cout << "Eklemek istediğiniz kelimeyi giriniz: ";
+                    //cin >> key;
+                    getline(cin >> ws, key);
+
                     cout << endl << "Kelimenin anlamını giriniz: ";
-                    cin >> value;
+                    //cin >> value;
+                    getline(cin >> ws, value);
+
                     key = u.toUpper(key);
                     value = u.toUpper(value);
                     tree->insert(key, value);
@@ -375,7 +385,8 @@ int main()
                         break;
                     }
                     cout << "Silmek istediğiniz kelimeyi giriniz: ";
-                    cin >> key;
+                    //cin >> key;
+                    getline(cin >> ws, key);
                     key = u.toUpper(key);
                     tree->deletee(key);
                     break;
@@ -404,7 +415,8 @@ int main()
                         break;
                     }
                     cout << "Anlamını bulmak istediğiniz kelimeyi giriniz: ";
-                    cin >> key;
+                    //cin >> key;
+                    getline(cin >> ws, key);
                     key = u.toUpper(key);
                     tree->search(key);
                     break;
@@ -423,7 +435,7 @@ int main()
                 case 0:
                     cout << "Çıkış yapılıyor..." << endl;
                     cout << "**************************" << endl;
-                    cout << "* Muhammed Yasin Þenocak *" << endl;
+                    cout << "* Muhammed Yasin Şenocak *" << endl;
                     cout << "*  Computer Engineering  *" << endl;
                     cout << "*       201504021        *" << endl;
                     cout << "**************************" << endl;
