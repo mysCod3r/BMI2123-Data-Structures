@@ -32,7 +32,7 @@ Sol-Sol Durumu // Sağa Döndürme |
 :-------------------------:|
 ![](https://github.com/mysCod3r/BMI2123-Assigments/blob/master/cpp-avl-tree-dictionary/images/left-left_case.gif?raw=true)
 
-Sol-Sağ Durumu // sola Döndürme + Sağa Döndürme |
+Sol-Sağ Durumu // Sola Döndürme + Sağa Döndürme |
 :-------------------------:|
 ![](https://github.com/mysCod3r/BMI2123-Assigments/blob/master/cpp-avl-tree-dictionary/images/left-right_case.gif?raw=true)
 
